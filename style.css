@@ -1,0 +1,24 @@
+body {
+
+}
+
+#container {
+    background-image: url("assets/images/background.png");
+    background-size: cover;
+    width: 800px;
+    height: 800px;
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    border: solid #000 4px;
+
+
+}
+
+#character {
+    width: 60px;
+    height: 100px;
+    position: relative;
+    left: 400px;
+    top: 600px;
+}
