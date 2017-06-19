@@ -8,7 +8,7 @@ body {
     width: 800px;
     height: 800px;
     position: relative;
-    margin: auto;
+    margin-left: 500px;
     margin-top: 5%;
     border: solid #000 4px;
 
@@ -22,3 +22,48 @@ body {
     left: 400px;
     top: 600px;
 }
+
+.foodItem {
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left:0
+}
+.bad {
+}
+
+.good {
+}
+.banana {
+    background-image: url('assets/data/img/banana.png');
+}
+.apple {
+    background-image: url('assets/data/img/apple.png');
+}
+.avocado {
+    background-image: url('assets/data/img/avocado.png');
+}
+.brocly {
+    background-image: url('assets/data/img/brocly.png');
+}
+.carrot {
+    background-image: url('assets/data/img/carrot.png');
+}
+.fish {
+    background-image: url('assets/data/img/fish.png');
+}
+.burger {
+    background-image: url('assets/data/img/burger.png');
+}
+.candy {
+    background-image: url('assets/data/img/candy.png');
+}
+.donut {
+    background-image: url('assets/data/img/donut.png');
+}
+.pizza {
+    background-image: url('assets/data/img/pizza.png');
+}
+
