@@ -2,12 +2,11 @@ $(document).ready(function () {
 
   $container = document.getElementById('container')
 
-
 startGame();
 
   // declaration variables
-  var newFood, x, y, idInterval
-
+  var newFood, x, y, idInterval;
+  var allPoints = 0;
 // random falling elements
 
  function startGame () {
@@ -37,7 +36,7 @@ newFood = document.createElement('div')
        });
 
 // we give random class to our empty object
-       newFood.className = 'foodItem';
+       newFood.className = 'foodItem ' + foodId[0].category ;
 
 
 // set id for all divs
@@ -53,6 +52,7 @@ newFood = document.createElement('div')
          var id = setInterval(function() {
           y++
            element.style.top = y + 'vh';
+           catchFoods(element, id);
 // console.log(element.style.top)
            if (parseInt(element.style.top )> 67 ) {
              element.remove();
@@ -63,6 +63,42 @@ newFood = document.createElement('div')
 
          }, speed)
        }
+
+       // catching falling elements by player
+
+       function catchFoods(element, interval) {
+         if (( player.x <= parseInt(element.style.left)&& parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 ) ) {
+           checkPoints(element);
+           element.remove()
+           console.log('point');
+
+           clearInterval(interval);
+         }
+
+       }
+
+       function checkPoints(element) {
+         if (element.classList.contains('good')) {
+           scoreUp();
+         } else {
+           scoreDown();
+         }
+       }
+
+
+       function scoreUp() {
+         allPoints += 10;
+         console.log('Score up! Actual score is - ', allPoints);
+         //$('#points').text($allPoints);
+       }
+
+       function scoreDown() {
+         allPoints -= 10;
+         console.log('Score down! Actual score is - ', allPoints);
+         //$('#points').text($allPoints);
+
+       }
+
 
      },1500
    )
