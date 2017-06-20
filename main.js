@@ -1,111 +1,122 @@
 $(document).ready(function () {
 
-  $container = document.getElementById('container')
 
-startGame();
+  startGame();
 
   // declaration variables
   var newFood, x, y, idInterval,
-  allPoints = 0,
-  allLives = 3;
-// random falling elements
+    allPoints = 0,
+    allLives = 3,
+    $container = document.getElementById('container')
 
- function startGame () {
-   idInterval = setInterval(
-     function game() {
-       //random position of newFood
-       x = Math.floor(Math.random() * 40);
-       y = 0;
+
+// random falling elements
+  function startGame() {
+    idInterval = setInterval(
+      function game() {
+        //random position of newFood
+        x = Math.floor(Math.random() * 40);
+        y = 0;
 
 //generating a div
+        newFood = document.createElement('div')
 
-newFood = document.createElement('div')
-       // setting new div position
-       newFood.style.top = y + "vh";
-       newFood.style.left = x + "vw";
+        // setting new div position
+        newFood.style.top = y + "vh";
+        newFood.style.left = x + "vw";
 
-       // generating random number from 1 to 10
-       var randomFoods = (Math.round(Math.random() * 9) + 1);
+        // generating random number from 1 to 10
+        var randomFoods = (Math.round(Math.random() * 9) + 1);
 
-       //get id of foods
-       var foodId = [];
-       foodId = foods.filter(function (item) {
-         if (item.id == randomFoods) {
-           return foodId.push(item)
+        //get id of foods
+        var foodId = [];
+        foodId = foods.filter(function (item) {
+          if (item.id == randomFoods) {
+            return foodId.push(item)
+          }
+        });
 
-         }
-       });
-
-// we give random class to our empty object
-       newFood.className = 'foodItem ' + foodId[0].category ;
+// we give class to our empty object
+        newFood.className = 'foodItem ' + foodId[0].category;
 
 
 // set id for all divs
-       newFood.id = foodId[0].name;
+        newFood.id = foodId[0].name;
 
-       // attaching new personalized div to body
-       $container.append(newFood);
+        // attaching new personalized div to body
+        $container.append(newFood);
 
-       // animate falling | speed = time in ms needed to fall from top to bottom | when it reaches bottom, function will delete the object
-       animate(newFood, 100);
-       function animate(element, speed) {
-         var y = 0;
-         var id = setInterval(function() {
-          y++
-           element.style.top = y + 'vh';
-           catchFoods(element, id);
-// console.log(element.style.top)
-           if (parseInt(element.style.top )> 67 ) {
-             element.remove();
-             clearInterval(id);
-           }
+        // animate falling | speed = time in ms needed to fall from top to bottom | when it reaches bottom, function will delete the object
+        animate(newFood, 100);
+        function animate(element, speed) {
+          var y = 0;
+          var id = setInterval(function () {
+            y++
+            element.style.top = y + 'vh';
+            catchFoods(element, id);
+            if (parseInt(element.style.top) > 67) {
+              element.remove();
+              clearInterval(id);
+              lossingLife(element)
+            }
+          }, speed)
+        }
 
+        // catching falling elements by player
 
+        function catchFoods(element, interval) {
+          if (( player.x <= parseInt(element.style.left) && parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 && parseInt(element.style.top) < 58)) {
+            checkPoints(element);
+            element.remove()
+            console.log('point');
 
-         }, speed)
-       }
+            clearInterval(interval);
+          }
 
-       // catching falling elements by player
+        }
 
-       function catchFoods(element, interval) {
-         if (( player.x <= parseInt(element.style.left)&& parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 && parseInt(element.style.top) < 58) ) {
-           checkPoints(element);
-           element.remove()
-           console.log('point');
+        // checking players points
+        function checkPoints(element) {
+          if (element.classList.contains('good')) {
+            scoreUp();
+          } else {
+            scoreDown();
+          }
+        }
 
-           clearInterval(interval);
-         }
+        function scoreUp() {
+          allPoints += 10;
+          console.log('Score up! Actual score is - ', allPoints);
+          $('#points').text(allPoints);
+        }
 
-       }
+        function scoreDown() {
+          allPoints -= 10;
+          console.log('Score down! Actual score is - ', allPoints);
+          $('#points').text(allPoints);
 
-       function checkPoints(element) {
-         if (element.classList.contains('good')) {
-           scoreUp();
-         } else {
-           scoreDown();
-         }
-       }
+        }
 
+        function lossingLife(element) {
 
-       function scoreUp() {
-         allPoints += 10;
-         console.log('Score up! Actual score is - ', allPoints);
-         $('#points').text(allPoints);
-       }
+          if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
+            allLives -= 1;
+            $('#lives-container img').last().remove();
+           gameOver();
 
-       function scoreDown() {
-         allPoints -= 10;
-         console.log('Score down! Actual score is - ', allPoints);
-         $('#points').text(allPoints);
+          }
+        }
 
-       }
+        function gameOver() {
+          if ( allLives <= 0) {
+          clearInterval(idInterval);
 
+          }
+        }
 
-     },1500
-   )
- }
-
-
+      }, 1500
+    )
+  }
 
 
 // player can run and jump
@@ -145,7 +156,6 @@ newFood = document.createElement('div')
         break;
     }
   }
-
 
 })
 
