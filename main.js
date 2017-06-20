@@ -67,7 +67,7 @@ newFood = document.createElement('div')
        // catching falling elements by player
 
        function catchFoods(element, interval) {
-         if (( player.x <= parseInt(element.style.left)&& parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 ) ) {
+         if (( player.x <= parseInt(element.style.left)&& parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 && parseInt(element.style.top) < 58) ) {
            checkPoints(element);
            element.remove()
            console.log('point');
