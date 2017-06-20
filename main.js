@@ -5,8 +5,9 @@ $(document).ready(function () {
 startGame();
 
   // declaration variables
-  var newFood, x, y, idInterval;
-  var allPoints = 0;
+  var newFood, x, y, idInterval,
+  allPoints = 0,
+  allLives = 3;
 // random falling elements
 
  function startGame () {
@@ -89,13 +90,13 @@ newFood = document.createElement('div')
        function scoreUp() {
          allPoints += 10;
          console.log('Score up! Actual score is - ', allPoints);
-         //$('#points').text($allPoints);
+         $('#points').text(allPoints);
        }
 
        function scoreDown() {
          allPoints -= 10;
          console.log('Score down! Actual score is - ', allPoints);
-         //$('#points').text($allPoints);
+         $('#points').text(allPoints);
 
        }
 

@@ -11,8 +11,33 @@ body {
     margin-left: 30vw;
     margin-top: 5vh;
     border: solid #000 4px;
+}
 
+#points-container {
+    font-family: Arial;
+    padding-left: 20px;
+    font-size: 30px;
+    color: #d3a02b;
+}
 
+#points {
+    padding-left: 10px;
+
+}
+
+#flex {
+    margin-top: -10vh;
+    display: flex;
+    justify-content: space-between;
+}
+#lives-container {
+    display: flex;
+    justify-content: center;
+}
+
+.lives {
+    margin-right: 20px;
+    margin-top: 5px;
 }
 
 #character {
