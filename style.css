@@ -5,28 +5,28 @@ body {
 #container {
     background-image: url("assets/images/background.png");
     background-size: cover;
-    width: 800px;
-    height: 800px;
+    width: 40vw;
+    height: 70vh;
     position: relative;
-    margin-left: 500px;
-    margin-top: 5%;
+    margin-left: 30vw;
+    margin-top: 5vh;
     border: solid #000 4px;
 
 
 }
 
 #character {
-    width: 60px;
-    height: 100px;
+    width: 4vw;
+    height: 10vh;
     position: relative;
-    left: 400px;
-    top: 600px;
+    left: 20vw;
+    top: 51vh;
 }
 
 .foodItem {
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+    width: 5vw;
+    height: 5vh;
     position: absolute;
     top: 0;
     left:0
@@ -36,34 +36,34 @@ body {
 
 .good {
 }
-.banana {
+#banana {
     background-image: url('assets/data/img/banana.png');
 }
-.apple {
+#apple {
     background-image: url('assets/data/img/apple.png');
 }
-.avocado {
+#avocado {
     background-image: url('assets/data/img/avocado.png');
 }
-.brocly {
+#brocly {
     background-image: url('assets/data/img/brocly.png');
 }
-.carrot {
+#carrot {
     background-image: url('assets/data/img/carrot.png');
 }
-.fish {
+#fish {
     background-image: url('assets/data/img/fish.png');
 }
-.burger {
+#burger {
     background-image: url('assets/data/img/burger.png');
 }
-.candy {
+#candy {
     background-image: url('assets/data/img/candy.png');
 }
-.donut {
+#donut {
     background-image: url('assets/data/img/donut.png');
 }
-.pizza {
+#pizza {
     background-image: url('assets/data/img/pizza.png');
 }
 
