@@ -1,13 +1,15 @@
-$(document).ready(function () {
-
+$(document).ready(function() {
+  var time = 1500;
 
   startGame();
+
 
   // declaration variables
   var newFood, x, y, idInterval,
     allPoints = 0,
     allLives = 3,
-    $container = document.getElementById('container')
+    $container = document.getElementById('container');
+
 
 
 // random falling elements
@@ -47,7 +49,8 @@ $(document).ready(function () {
         $container.append(newFood);
 
         // animate falling | speed = time in ms needed to fall from top to bottom | when it reaches bottom, function will delete the object
-        animate(newFood, 100);
+        var speed = 100
+        animate(newFood, speed);
         function animate(element, speed) {
           var y = 0;
           var id = setInterval(function () {
@@ -67,10 +70,10 @@ $(document).ready(function () {
         function catchFoods(element, interval) {
           if (( player.x <= parseInt(element.style.left) && parseInt(element.style.left) <= (player.x + 4) && parseInt(element.style.top) > 48 && parseInt(element.style.top) < 58)) {
             checkPoints(element);
-            element.remove()
-            console.log('point');
-
+            element.remove();
+            nextLevel();
             clearInterval(interval);
+
           }
 
         }
@@ -97,6 +100,23 @@ $(document).ready(function () {
 
         }
 
+        function nextLevel() {
+          if (allPoints > 50) {
+            clearInterval(idInterval);
+            time = 1000;
+            startGame();
+          } else if (allPoints > 100) {
+            clearInterval(idInterval);
+            time = 750;
+            startGame();
+          } else if (allPoints > 150) {
+            clearInterval(idInterval);
+            time = 500;
+            startGame();
+          }
+        }
+
+
         function lossingLife(element) {
 
           if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
@@ -114,7 +134,7 @@ $(document).ready(function () {
           }
         }
 
-      }, 1500
+      },time
     )
   }
 
