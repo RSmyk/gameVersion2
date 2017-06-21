@@ -1,7 +1,6 @@
 body {
-
+background-color: #000000;
 }
-
 #container {
     background-image: url("assets/images/background.png");
     background-size: cover;
@@ -11,8 +10,8 @@ body {
     margin-left: 30vw;
     margin-top: 5vh;
     border: solid #000 4px;
+    display: none;
 }
-
 #points-container {
     font-family: Arial;
     padding-left: 20px;
@@ -56,11 +55,38 @@ body {
     top: 0;
     left:0
 }
-.bad {
+
+#menu {
+    position: relative;
+    width: 40vw;
+    height: 70vh;
+    background-image: url("assets/images/menu-background.jpg");
+    background-size: cover;
+    margin-left: 30vw;
+    margin-top: 5vh;
+    border: solid #000 4px;
+    text-align: center;
+
 }
 
-.good {
+.menu-list {
+    padding-top: 350px;
+    font-size: 30px;
 }
+
+#play:hover {
+    transform: scale(0.9);
+}
+
+#rank:hover {
+    transform: scale(0.9);
+}
+
+#instructions:hover {
+    transform: scale(0.9);
+}
+
+
 #banana {
     background-image: url('assets/data/img/banana.png');
 }

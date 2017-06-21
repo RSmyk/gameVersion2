@@ -1,19 +1,30 @@
-$(document).ready(function() {
-  var time = 1500;
+$(document).ready(function () {
+  allGame();
 
-  startGame();
+function allGame() {
+  $('#menu').show('slow');
+  $('#container').hide('slow');
 
+  $("#play").click(function () {
+    $('#menu').hide('slow');
+    $('#container').show('slow');
+    startGame();
 
+  });
+
+  var time;
   // declaration variables
   var newFood, x, y, idInterval,
-    allPoints = 0,
-    allLives = 3,
+    allPoints,
+    allLives,
     $container = document.getElementById('container');
-
 
 
 // random falling elements
   function startGame() {
+    time=1500;
+    allPoints = 0;
+    allLives = 3;
     idInterval = setInterval(
       function game() {
         //random position of newFood
@@ -54,7 +65,7 @@ $(document).ready(function() {
         function animate(element, speed) {
           var y = 0;
           var id = setInterval(function () {
-            y++
+            y++;
             element.style.top = y + 'vh';
             catchFoods(element, id);
             if (parseInt(element.style.top) > 67) {
@@ -113,30 +124,40 @@ $(document).ready(function() {
             clearInterval(idInterval);
             time = 500;
             startGame();
+          } else if (allPoints > 200) {
+            clearInterval(idInterval);
+            time = 300;
+            startGame();
           }
         }
 
 
         function lossingLife(element) {
-
           if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
             allLives -= 1;
             $('#lives-container img').last().remove();
-           gameOver();
+            gameOver();
 
           }
         }
+      }, time)
 
-        function gameOver() {
-          if ( allLives <= 0) {
-          clearInterval(idInterval);
-
-          }
-        }
-
-      },time
-    )
   }
+
+  function gameOver() {
+    if (allLives <= 0) {
+      clearInterval(idInterval);
+      $('#character').animate({"top": (player.y -= 5) + 'vh'}, 500);
+      $('#character').animate({"top": (player.y += 20) + 'vh'}, 500);
+      setTimeout(function() {
+        $('#character').hide('slow');
+      }, 1000)
+setTimeout(function () {
+   location.reload();
+}, 1500)
+    }
+  }
+
 
 
 // player can run and jump
@@ -176,6 +197,9 @@ $(document).ready(function() {
         break;
     }
   }
+
+
+}
 
 })
 
