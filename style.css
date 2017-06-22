@@ -1,22 +1,47 @@
 body {
-background-color: #97D9E8;
+    background-color: #97D9E8;
+    font-family: "Showcard Gothic";
+    font-size: 30px;
+    color: #d3a02b;
 }
-#container {
-    background-image: url("assets/images/background.png");
-    background-size: cover;
+
+.gameWindow {
     width: 40vw;
     height: 70vh;
     position: relative;
     margin-left: 30vw;
     margin-top: 5vh;
     border: solid #000 4px;
+    background-size: cover;
+}
+
+#menu {
+    background-image: url("assets/images/menu-background.jpg");
+    text-align: center;
+}
+
+.menu-list {
+    padding-top: 350px;
+    font-size: 30px;
+}
+
+#container {
+    background-image: url("assets/images/background.png");
     display: none;
 }
+
+#gameOverPanel {
+    background-image: url("assets/images/background.png");
+    display: none;
+    text-align: center;
+}
+#return:hover {
+    font-size: 40px;
+    cursor: pointer;
+}
+
 #points-container {
-    font-family: Arial;
     padding-left: 20px;
-    font-size: 30px;
-    color: #d3a02b;
 }
 
 #points {
@@ -29,6 +54,7 @@ background-color: #97D9E8;
     display: flex;
     justify-content: space-between;
 }
+
 #lives-container {
     display: flex;
     justify-content: center;
@@ -53,25 +79,7 @@ background-color: #97D9E8;
     height: 5vh;
     position: absolute;
     top: 0;
-    left:0
-}
-
-#menu {
-    position: relative;
-    width: 40vw;
-    height: 70vh;
-    background-image: url("assets/images/menu-background.jpg");
-    background-size: cover;
-    margin-left: 30vw;
-    margin-top: 5vh;
-    border: solid #000 4px;
-    text-align: center;
-
-}
-
-.menu-list {
-    padding-top: 350px;
-    font-size: 30px;
+    left: 0
 }
 
 #play:hover {
@@ -86,34 +94,42 @@ background-color: #97D9E8;
     transform: scale(0.9);
 }
 
-
 #banana {
     background-image: url('assets/data/img/banana.png');
 }
+
 #apple {
     background-image: url('assets/data/img/apple.png');
 }
+
 #avocado {
     background-image: url('assets/data/img/avocado.png');
 }
+
 #brocly {
     background-image: url('assets/data/img/brocly.png');
 }
+
 #carrot {
     background-image: url('assets/data/img/carrot.png');
 }
+
 #fish {
     background-image: url('assets/data/img/fish.png');
 }
+
 #burger {
     background-image: url('assets/data/img/burger.png');
 }
+
 #candy {
     background-image: url('assets/data/img/candy.png');
 }
+
 #donut {
     background-image: url('assets/data/img/donut.png');
 }
+
 #pizza {
     background-image: url('assets/data/img/pizza.png');
 }
