@@ -130,22 +130,21 @@ $(document).ready(function () {
             }
           }
 
-
-          function lossingLife(element) {
-            if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
-              allLives -= 1;
-              $('#lives-container img').last().remove();
-              bad.play();
-              gameOver();
-
-            }
-          }
         }, time)
+    }
 
+
+    function lossingLife(element) {
+      if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
+        allLives -= 1;
+        $('#lives-container img').last().remove();
+        bad.play();
+        gameOver();
+      }
     }
 
     function gameOver() {
-      if (allLives <= 0) {
+      if (allLives == 0) {
         clearInterval(idInterval);
         $('#character').animate({"top": (player.y -= 5) + 'vh'}, 500);
         $('#character').animate({"top": (player.y += 20) + 'vh'}, 500);
@@ -157,12 +156,13 @@ $(document).ready(function () {
         setTimeout(function () {
           $('#container').hide('slow');
           $('#gameOverPanel').show('slow');
-          gameScore();
+          newGame();
         }, 1500)
       }
+      return;
     }
 
-    function gameScore() {
+    function newGame() {
       $('#yourScore').text(allPoints);
       $('#return').on('click', function () {
         location.reload()
