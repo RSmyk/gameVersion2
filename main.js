@@ -135,7 +135,7 @@ $(document).ready(function () {
 
 
     function lossingLife(element) {
-      if (element.classList.contains('good') && parseInt(element.style.top) > 58) {
+      if (element.classList.contains('good') && parseInt(element.style.top) > 58 && allLives > 0) {
         allLives -= 1;
         $('#lives-container img').last().remove();
         bad.play();
@@ -151,6 +151,7 @@ $(document).ready(function () {
         setTimeout(function () {
           $('#character').hide('slow');
         }, 1000);
+        bad.pause();
         play.pause();
         lose.play();
         setTimeout(function () {
